@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 上面 加入 spring-context 约束，参照spring文档： 41.2.8 the context schema；否则，无法使用 context属性 -->
+
+
+    <!-- 开启注解扫描:
+            会扫描 类、属性、方法上的注解
+    -->
+    <context:component-scan base-package="com.gjr.ann"/>
+    <!--
+         只会扫描 属性 的注解：
+         <context:annotation-config></context:annotation-config>
+    -->
+
+
+</beans>
