@@ -21,8 +21,10 @@ public class UserTest {
     @Test
     public void show() throws Exception {
         User user = (User) context.getBean("user");
+        User user1 = (User) context.getBean("user");
         System.out.println(user);
         user.show();
+        System.out.println(user == user1);
     }
 
 }
