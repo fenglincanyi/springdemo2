@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 加入 context, aop 约束，结合注解生成实例，xml 配置aop 来实现功能-->
+
+    <bean id="book" class="com.gjr.aspect.Book"/>
+    <bean id="myBook" class="com.gjr.aspect.MyBook"/>
+
+    <aop:config>
+        <!-- 切点: 需要被增强功能的方法 -->
+        <aop:pointcut id="bookPoint" expression="execution(* com.gjr.aspect.Book.show(..))"/>
+        <!-- 切面: 把增强方法加到需要增强的方法上 -->
+        <aop:aspect ref="myBook">
+            <aop:before method="addFunctionBefore" pointcut-ref="bookPoint"/>
+            <aop:after method="addFunctionAfter" pointcut-ref="bookPoint"/>
+            <aop:around method="arroundFunction" pointcut-ref="bookPoint"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
